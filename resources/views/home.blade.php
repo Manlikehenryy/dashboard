@@ -921,9 +921,6 @@
         z-index: 1000;
     }
 
-    .slide-out{
-        animation: slide-out 1s ease-out forwards;
-    }
         @keyframes slide {
         0% {
             transform: translateY(-100%)  translateX(-50%);
@@ -946,6 +943,11 @@
         }
     }
 
+
+    }
+    .slide-out{
+        animation: slide-out 1s ease-out forwards;
+    }
     @keyframes slide-out {
         0% {
             transform: translateY(0%)  translateX(-50%);
@@ -972,14 +974,13 @@
             opacity: 0;
         }
     }
-    }
 
 
     @media(max-width:768px){
         .moda {
         width: 300px;
         height: 250px;
-        position: absolute;
+        position: fixed;
         top: 20%;
         left: 50%;
 
@@ -990,12 +991,13 @@
         background-color: #fff;
         border-radius: 15px;
         box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
     }
     .comms {
         padding: 20px 0;
         width: 300px;
         height: 250px;
-        position: absolute;
+        position: fixed;
         top: 20%;
         left: 50%;
 
@@ -1006,8 +1008,11 @@
         background-color: #fff;
         border-radius: 15px;
         box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
     }
-
+    #overlay{
+        height: 110vh;
+    }
     .comms h5 {
         font-size: 14px;
     }
@@ -1227,8 +1232,14 @@
     })
 
     close.forEach(val => val.addEventListener('click', function() {
+      if (screen.width>768) {
         modal.classList.add('slide-out');
         comm.classList.add('slide-out');
+      }
+        else{
+            modal.classList.add('hide');
+            comm.classList.add('hide');
+        }
         overlay.classList.add('hide');
     }))
 
@@ -1290,4 +1301,22 @@
         })
     });
 </script>
+
+{{-- <script>
+let background = document.querySelector('.backg');
+pictureArray = ['https://images.unsplash.com/photo-1494697536454-6f39e2cc972d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHx8&w=1000&q=80',
+'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?cs=srgb&dl=pexels-mike-b-170811.jpg&fm=jpg',
+'https://stimg.cardekho.com/images/carexteriorimages/930x620/Bentley/Flying-Spur/7776/1645012163948/front-left-side-47.jpg?tr=h-48'
+]
+let count = 0;
+setInterval(() => {
+background.style.backgroundImage = `url(${pictureArray[count]})`;
+
+if (count===pictureArray.length-1) {
+    count = 0;
+}
+++count;
+}, 2000);
+
+</script> --}}
 
