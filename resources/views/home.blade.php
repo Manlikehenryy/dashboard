@@ -1,3 +1,4 @@
+<!--THIS IS ON YOUR PERSONAL GITHUB ACCOUNT-->
 <x-body>
 
     @section('content')
@@ -977,6 +978,12 @@
 
 
     @media(max-width:768px){
+        div.copyright span{
+          font-size: 12px;
+        }
+        h4.head{
+         font-size: 14px;
+        }
         .moda {
         width: 300px;
         height: 250px;
